@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Otp Verification</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <section id="container">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="wrapper">
+        <h2>OTP verification</h2>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+
+        <input type="text" name="email_otp" placeholder="Email OTP" required>
+        <button type="submit">Verify OTP</button>
+
+        <!-- <button type="submit">Regenerate OTP</button> -->
+
+      </div>
+    </form>
+  </section>
+</body>
+</html>
